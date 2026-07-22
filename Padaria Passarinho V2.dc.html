@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#14100b;color:#e3d5b8;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  img,video{display:block;max-width:100%}
+  a{color:#a9803f;text-decoration:none}
+  a:hover{color:#cda454}
+  ::selection{background:#cda454;color:#14100b}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
+</style>
+</helmet>
+
+<div style="position:relative;overflow-x:hidden">
+
+<div data-texture="1" style="position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:overlay;opacity:0.1;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+
+<header style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px clamp(16px,4vw,48px);background:rgba(20,16,11,0.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(169,128,63,0.18)">
+  <a href="#topo" style="display:flex;align-items:center;gap:12px">
+    <img src="assets/emblem.png" alt="Padaria Passarinho" style="height:40px;width:auto;flex:none">
+    <span style="display:flex;flex-direction:column;line-height:1">
+      <span style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#a9803f;font-weight:700">Padaria</span>
+      <span style="font-family:'Playfair Display',serif;font-weight:800;font-size:22px;color:#d9b25f;letter-spacing:0.01em">Passarinho</span>
+    </span>
+  </a>
+  <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,30px);flex-wrap:wrap;justify-content:flex-end">
+    <a href="#bolos" style="color:#d4c3a0;font-weight:600;font-size:15px">Bolos</a>
+    <a href="#sobremesas" style="color:#d4c3a0;font-weight:600;font-size:15px">Sobremesas</a>
+    <a href="#lanches" style="color:#d4c3a0;font-weight:600;font-size:15px">Lanches</a>
+    <a href="#encomendar" style="color:#d4c3a0;font-weight:600;font-size:15px">Como encomendar</a>
+    <a href="#onde" style="color:#d4c3a0;font-weight:600;font-size:15px">Onde estamos</a>
+    <a href="{{ waHref }}" target="_blank" rel="noopener" data-cta="1" style="display:inline-flex;align-items:center;gap:8px;background:#cda454;color:#14100b;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background .2s" style-hover="transform:translateY(-2px);box-shadow:0 10px 22px rgba(23,19,14,0.3)">WhatsApp</a>
+  </nav>
+</header>
+
+<section id="topo" style="position:relative;z-index:2;height:100vh;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end">
+  <img src="assets/banoffee.jpg" alt="Sobremesa artesanal da Padaria Passarinho" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;z-index:0">
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(23,19,14,0.28) 0%,rgba(23,19,14,0.08) 32%,rgba(23,19,14,0.72) 82%,rgba(23,19,14,0.92) 100%)"></div>
+  <div style="position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px) clamp(40px,7vh,88px);animation:rise .9s cubic-bezier(.2,.7,.2,1) both">
+    <p style="color:#e6c383;font-weight:600;font-size:clamp(14px,1.6vw,17px);margin-bottom:14px;font-family:'Playfair Display',serif;font-style:italic">Padaria & confeitaria artesanal</p>
+    <h1 style="font-family:'Playfair Display',serif;font-weight:800;color:#f1e6d2;font-size:clamp(38px,6.4vw,86px);line-height:1.02;letter-spacing:-0.01em;max-width:16ch;text-wrap:balance;text-shadow:0 2px 30px rgba(10,8,6,0.4)">Tudo feito à mão, do jeitinho de casa.</h1>
+    <p style="color:#e8dcc4;font-size:clamp(16px,1.8vw,21px);line-height:1.55;max-width:52ch;margin-top:22px;text-shadow:0 1px 14px rgba(10,8,6,0.5)">Bolos por encomenda, sobremesas, caseirinhos e lanches naturais. Peça pelo WhatsApp e retire fresquinho aqui na Passarinho.</p>
+    <div style="display:flex;align-items:center;gap:clamp(18px,3vw,36px);flex-wrap:wrap;margin-top:34px">
+      <a href="{{ waHref }}" target="_blank" rel="noopener" data-cta="1" style="display:inline-flex;align-items:center;gap:10px;background:#cda454;color:#14100b;font-weight:700;font-size:clamp(15px,1.6vw,18px);padding:16px 30px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background .2s;box-shadow:0 8px 26px rgba(10,8,6,0.35)" style-hover="transform:translateY(-3px);box-shadow:0 14px 34px rgba(10,8,6,0.45)">Encomendar no WhatsApp</a>
+      <div data-rating="1" style="display:flex;align-items:center;gap:14px">
+        <span style="font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(34px,4.4vw,52px);color:#e6c383;line-height:1">4,9</span>
+        <span style="display:flex;flex-direction:column;line-height:1.25">
+          <span style="color:#e6c383;font-size:18px;letter-spacing:2px">★★★★★</span>
+          <span style="color:#e8dcc4;font-size:13px;font-weight:500">220 avaliações no Google</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Ambiente da loja" style="position:relative;z-index:2;background:#17130e;padding:clamp(40px,7vh,80px) clamp(20px,5vw,56px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,48px);align-items:center;justify-content:center">
+    <div style="flex:0 0 auto;width:min(300px,80vw);border-radius:16px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,0.4);aspect-ratio:9/16"><video src="assets/ambiente.mp4" autoplay="true" muted="true" loop="true" playsinline="true" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+    <p style="flex:1 1 280px;max-width:32ch;font-family:'Playfair Display',serif;font-style:italic;color:#f1e6d2;font-size:clamp(20px,2.6vw,30px);line-height:1.3">Um cantinho pra sentar, tomar um café e comer aquele pão quentinho.</p>
+  </div>
+</section>
+
+<section id="bolos" style="position:relative;z-index:2;scroll-margin-top:80px;padding:clamp(56px,9vh,110px) clamp(20px,5vw,56px);max-width:1180px;margin:0 auto"><div aria-hidden="true" style="position:absolute;top:32px;right:-30px;width:clamp(160px,22vw,280px);opacity:0.06;pointer-events:none;z-index:0"><img src="assets/emblem.png" style="width:100%"></div>
+  <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) both">
+    <div style="display:flex;align-items:center;gap:14px;color:#a9803f;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(169,128,63,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#a9803f">Clássicos da casa</span></div>
+    <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#d9b25f;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.01em">Bolos por encomenda</h2>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(30px,5vw,64px);margin-top:clamp(30px,5vh,52px);align-items:flex-start">
+    <div style="flex:1 1 380px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .08s both">
+      <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.6;color:#c7b696;max-width:46ch">Tortas altas, recheio generoso e cobertura feita na hora. Todas <strong style="color:#d9b25f">79,90/kg</strong>, montadas sob encomenda com pelo menos 48h de antecedência.</p>
+      <div style="display:grid;grid-template-columns:1fr;gap:2px;margin-top:28px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(169,128,63,0.16)"><span><span style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#d9b25f">Torta da casa</span><br><span style="color:#b09b76;font-size:14.5px">Morango, nata e 4 leites</span></span><span style="font-weight:700;color:#cda454;white-space:nowrap">79,90/kg</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(169,128,63,0.16)"><span><span style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#d9b25f">Torta Mineira</span><br><span style="color:#b09b76;font-size:14.5px">Creme 4 leites, abacaxi e coco ralado</span></span><span style="font-weight:700;color:#cda454;white-space:nowrap">79,90/kg</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(169,128,63,0.16)"><span><span style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#d9b25f">Torta dois amores</span><br><span style="color:#b09b76;font-size:14.5px">Brigadeiro branco e meio amargo</span></span><span style="font-weight:700;color:#cda454;white-space:nowrap">79,90/kg</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(169,128,63,0.16)"><span><span style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#d9b25f">Torta tentação</span><br><span style="color:#b09b76;font-size:14.5px">Chocolate preto com morango</span></span><span style="font-weight:700;color:#cda454;white-space:nowrap">79,90/kg</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(169,128,63,0.16)"><span><span style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#d9b25f">Torta Marta Rocha</span><br><span style="color:#b09b76;font-size:14.5px">Baba de moça, crocante de nozes, geleia de damasco e nata</span></span><span style="font-weight:700;color:#cda454;white-space:nowrap">79,90/kg</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0"><span><span style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#d9b25f">Torta Floresta Negra</span><br><span style="color:#b09b76;font-size:14.5px">Chocolate, chantilly e cerejas</span></span><span style="font-weight:700;color:#cda454;white-space:nowrap">79,90/kg</span></div>
+      </div>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" data-cta="1" style="display:inline-flex;align-items:center;gap:9px;margin-top:30px;background:#cda454;color:#14100b;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,19,14,0.28)">Encomendar meu bolo</a>
+    </div>
+    <div style="flex:0 1 420px;min-width:280px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .16s both">
+      <div style="border-radius:16px;overflow:hidden;box-shadow:0 22px 50px rgba(46,42,22,0.22);aspect-ratio:4/5"><img src="assets/torta-morango-encomenda.jpg" alt="Torta de morango, 4 leites, nata e suspiro" style="width:100%;height:100%;object-fit:cover;object-position:bottom"></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobremesas" style="position:relative;z-index:2;scroll-margin-top:80px;background:#1c1712;padding:clamp(56px,9vh,110px) clamp(20px,5vw,56px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) both;max-width:60ch">
+      <div style="display:flex;align-items:center;gap:14px;color:#a9803f;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(169,128,63,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#a9803f">Feitas no capricho</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#d9b25f;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.01em">Sobremesas & doces</h2>
+      <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.6;color:#c7b696;margin-top:16px">As tortas geladas e os doces da vitrine mudam ao longo da semana. Estas são as queridinhas da casa.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(22px,3vw,40px);margin-top:clamp(30px,5vh,52px)">
+      <figure style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .08s both;display:flex;flex-direction:column">
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(46,42,22,0.2);aspect-ratio:1/1"><img src="assets/banoffee.jpg" alt="Fatia de banoffee com chantilly e doce de leite" style="width:100%;height:100%;object-fit:cover"></div>
+        <figcaption style="margin-top:18px"><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:#d9b25f">Banoffee</h3><p style="color:#c0ae8a;font-size:15px;line-height:1.55;margin-top:4px">Base crocante, doce de leite, banana e muito chantilly polvilhado com canela.</p></figcaption>
+      </figure>
+      <figure style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .12s both;display:flex;flex-direction:column">
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(46,42,22,0.2);aspect-ratio:1/1"><img src="assets/bolo-bolacha.jpg" alt="Fatia de bolo de bolacha com cobertura de chocolate" style="width:100%;height:100%;object-fit:cover"></div>
+        <figcaption style="margin-top:18px"><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:#d9b25f">Bolo de bolacha</h3><p style="color:#c0ae8a;font-size:15px;line-height:1.55;margin-top:4px">Camadas de biscoito e creme, calda de chocolate por cima. Aquele de sempre, do jeito que a vó fazia.</p></figcaption>
+      </figure>
+      <figure style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .16s both;display:flex;flex-direction:column">
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(46,42,22,0.2);aspect-ratio:1/1"><img src="assets/cheesecake.jpg" alt="Cheesecake de chocolate com Oreo" style="width:100%;height:100%;object-fit:cover"></div>
+        <figcaption style="margin-top:18px"><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:#d9b25f">Cheesecake de Oreo</h3><p style="color:#c0ae8a;font-size:15px;line-height:1.55;margin-top:4px">Base de chocolate crocante, recheio cremoso com pedaços de Oreo e ganache por cima.</p></figcaption>
+      </figure>
+      <figure style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .2s both;display:flex;flex-direction:column">
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(46,42,22,0.2);aspect-ratio:1/1"><img src="assets/carolinas.jpg" alt="Carolinas recheadas com chantilly, morango e chocolate" style="width:100%;height:100%;object-fit:cover"></div>
+        <figcaption style="margin-top:18px"><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:#d9b25f">Carolinas</h3><p style="color:#c0ae8a;font-size:15px;line-height:1.55;margin-top:4px">Massa leve recheada na hora, cobertura de chocolate ou chantilly com fruta fresca.</p></figcaption>
+      </figure>
+      <figure style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .24s both;display:flex;flex-direction:column">
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(46,42,22,0.2);aspect-ratio:1/1"><img src="assets/folhados.jpg" alt="Folhadinhos com creme, morango e cereja" style="width:100%;height:100%;object-fit:cover"></div>
+        <figcaption style="margin-top:18px"><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:#d9b25f">Folhadinhos</h3><p style="color:#c0ae8a;font-size:15px;line-height:1.55;margin-top:4px">Massa folhada crocante, creme confeiteiro e fruta fresca por cima. Vendidos por unidade.</p></figcaption>
+      </figure>
+      <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .28s both;display:flex;flex-direction:column;justify-content:center;background:#1f1a15;border-radius:14px;padding:clamp(26px,3vw,40px);box-shadow:0 18px 40px rgba(46,42,22,0.12)">
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#a9803f">E ainda tem</p>
+        <p style="font-size:17px;line-height:1.7;color:#d4c3a0;margin-top:8px">Bombom de morango, bombom de uva verde, pudim e mousse de maracujá ou limão. Peça a fatia ou a taça inteira.</p>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="margin-top:20px;font-weight:700;color:#d9b25f;border-bottom:2px solid #cda454;padding-bottom:2px;align-self:flex-start">Ver o que tem hoje →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="caseirinhos" style="position:relative;z-index:2;scroll-margin-top:80px;padding:clamp(56px,9vh,110px) clamp(20px,5vw,56px);max-width:1180px;margin:0 auto">
+  <div style="display:flex;flex-wrap:wrap-reverse;gap:clamp(30px,5vw,64px);align-items:center">
+    <div style="flex:1 1 320px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .08s both">
+      <div style="display:flex;align-items:center;gap:14px;color:#a9803f;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(169,128,63,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#a9803f">Saem quentinhos o dia todo</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#d9b25f;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.01em">Caseirinhos & donuts</h2>
+      <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.65;color:#c7b696;margin-top:18px;max-width:44ch">Sonho de morango recheado, donuts do dia e os caseirinhos polvilhados que a gente tira do forno a toda hora. Chegou, provou.</p>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" data-cta="1" style="display:inline-flex;align-items:center;gap:9px;margin-top:26px;background:#cda454;color:#14100b;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,19,14,0.28)">Reservar uma fornada</a>
+      <div style="margin-top:28px;border-radius:14px;overflow:hidden;box-shadow:0 14px 32px rgba(46,42,22,0.18);max-width:340px"><video src="assets/processo-pao.mp4" autoplay="true" muted="true" loop="true" playsinline="true" style="width:100%;height:auto;display:block"></video><p style="font-size:12.5px;color:#8a7550;padding:8px 4px 0">Direto do forno: nosso processo do dia a dia.</p></div>
+    </div>
+    <div style="flex:1 1 380px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .16s both;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 36px rgba(46,42,22,0.2)"><img src="assets/sonho-morango.jpg" alt="Sonho de morango polvilhado com açúcar" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"></div>
+      <div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 36px rgba(46,42,22,0.2)"><img src="assets/sonhos-tray.jpg" alt="Bandeja de sonhos de morango e chocolate" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"></div>
+      <div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 36px rgba(46,42,22,0.2)"><img src="assets/donuts.jpg" alt="Donuts de chocolate e cobertura rosa com granulado" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"></div>
+      <div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 36px rgba(46,42,22,0.2)"><img src="assets/caseirinhos-trio.jpg" alt="Bolos caseirinhos individuais de cenoura e chocolate" style="width:100%;height:100%;object-fit:cover;object-position:bottom;aspect-ratio:1/1"></div>
+    </div>
+  </div>
+</section>
+
+<section id="lanches" style="position:relative;z-index:2;scroll-margin-top:80px;background:#17130e;color:#ecdfc4;padding:clamp(56px,9vh,110px) clamp(20px,5vw,56px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(30px,5vw,64px);align-items:center">
+      <div style="flex:1 1 320px;animation:rise .8s cubic-bezier(.2,.7,.2,1) both">
+        <div style="display:flex;align-items:center;gap:14px;color:#e6c383;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(230,195,131,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#e6c383">Montado na hora</span></div>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#f1e6d2;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.01em">Lanches naturais</h2>
+        <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.65;color:#dccba7;margin-top:18px;max-width:46ch">Pão integral, croissant ou baguete de grãos, recheio montado na hora e salada fresquinha. Pra levar ou comer ali mesmo, no balcão.</p>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;margin-top:26px;background:#cda454;color:#14100b;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.3)">Pedir um lanche</a>
+      </div>
+      <div style="flex:1 1 380px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .12s both;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,0.35);grid-column:1/-1"><img src="assets/lanche-salame.jpg" alt="Lanche natural de salame, presunto, queijo, tomate e salada no pão de grãos" style="width:100%;height:auto"></div>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.3)"><img src="assets/wrap.jpg" alt="Wrap de frango com alface, tomate e cenoura" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"></div>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.3)"><img src="assets/croissant-lanche.jpg" alt="Croissant recheado com presunto, queijo, alface e tomate" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"></div>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.3)"><img src="assets/croissant-natural.jpg" alt="Croissant natural recheado, montado na hora" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"></div>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.3)"><img src="assets/sanduiches-forno.jpg" alt="Sanduíches naturais em pães variados, recém-montados" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="minicakes" style="position:relative;z-index:2;scroll-margin-top:80px;padding:clamp(56px,9vh,110px) clamp(20px,5vw,56px);max-width:1180px;margin:0 auto">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(30px,5vw,64px);align-items:center">
+    <div style="flex:1 1 360px;animation:rise .8s cubic-bezier(.2,.7,.2,1) both;order:2;display:flex;flex-direction:column;gap:14px"><div style="border-radius:16px;overflow:hidden;box-shadow:0 22px 50px rgba(46,42,22,0.22);aspect-ratio:1440/1075"><img src="assets/mini-cakes.jpg" alt="Mini cakes embalados com laços verde e dourado" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 36px rgba(46,42,22,0.2)"><img src="assets/mini-cakes-top.png" alt="Mãos segurando mini cakes embalados" style="width:100%;height:auto"></div></div>
+    <div style="flex:1 1 320px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .1s both;order:1">
+      <div style="display:flex;align-items:center;gap:14px;color:#a9803f;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(169,128,63,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#a9803f">Do tamanho da comemoração</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#d9b25f;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.01em">Mini cakes</h2>
+      <p style="font-size:clamp(16px,1.8vw,19px);line-height:1.65;color:#c7b696;margin-top:18px;max-width:44ch">Bolinho individual, embalado com laço, perfeito pra celebrar um momento especial com quem você ama. Escolha o sabor e a cor da fita.</p>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" data-cta="1" style="display:inline-flex;align-items:center;gap:9px;margin-top:26px;background:#cda454;color:#14100b;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,19,14,0.28)">Encomendar um mini cake</a>
+    </div>
+  </div>
+</section>
+
+<section id="encomendar" style="position:relative;z-index:2;scroll-margin-top:80px;background:#1c1712;padding:clamp(56px,9vh,110px) clamp(20px,5vw,56px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) both;max-width:56ch">
+      <div style="display:flex;align-items:center;gap:14px;color:#a9803f;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(169,128,63,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#a9803f">Rapidinho e sem complicação</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#d9b25f;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.01em">Como encomendar</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(20px,2.5vw,34px);margin-top:clamp(30px,5vh,52px)">
+      <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .06s both"><span style="font-family:'Playfair Display',serif;font-weight:800;font-size:40px;color:#cda454;display:block">01</span><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:21px;color:#d9b25f;margin-top:6px">Chama no WhatsApp</h3><p style="color:#c7b696;font-size:15.5px;line-height:1.6;margin-top:6px">Manda o sabor, o tamanho (em kg) e a data que você precisa. A gente confirma tudo por lá.</p></div>
+      <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .14s both"><span style="font-family:'Playfair Display',serif;font-weight:800;font-size:40px;color:#cda454;display:block">02</span><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:21px;color:#d9b25f;margin-top:6px">Peça com antecedência</h3><p style="color:#c7b696;font-size:15.5px;line-height:1.6;margin-top:6px">Bolos e tortas com no mínimo 48h. Bolos decorados e para festa, 3 dias antes.</p></div>
+      <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .22s both"><span style="font-family:'Playfair Display',serif;font-weight:800;font-size:40px;color:#cda454;display:block">03</span><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:21px;color:#d9b25f;margin-top:6px">Sinal de 50%</h3><p style="color:#c7b696;font-size:15.5px;line-height:1.6;margin-top:6px">O pedido é reservado com 50% de sinal. O restante você acerta na hora de retirar.</p></div>
+      <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) .3s both"><span style="font-family:'Playfair Display',serif;font-weight:800;font-size:40px;color:#cda454;display:block">04</span><h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:21px;color:#d9b25f;margin-top:6px">Retire fresquinho</h3><p style="color:#c7b696;font-size:15.5px;line-height:1.6;margin-top:6px">Combinamos dia e horário de retirada na loja. Sai do balcão pra sua mesa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="onde" style="position:relative;z-index:2;scroll-margin-top:80px;padding:clamp(56px,9vh,110px) clamp(20px,5vw,56px);max-width:1180px;margin:0 auto">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,52px);align-items:stretch">
+    <div style="flex:1 1 320px;animation:rise .8s cubic-bezier(.2,.7,.2,1) both;display:flex;flex-direction:column;justify-content:center">
+      <div style="display:flex;align-items:center;gap:14px;color:#a9803f;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(169,128,63,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#a9803f">Passa aqui</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#d9b25f;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.01em">Onde estamos</h2>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:18px">
+        <div><span style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#cda454;font-weight:700">Endereço</span><p style="font-size:18px;color:#e3d5b8;line-height:1.5;margin-top:4px">R. José Olímpio da Silva, 108<br>Tapera da Base, Florianópolis - SC</p></div>
+        <div><span style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#cda454;font-weight:700">Horário</span><p style="font-size:18px;color:#e3d5b8;line-height:1.5;margin-top:4px">Segunda a sábado, 5h30 às 20h<br>Domingo, 5h30 às 12h</p></div>
+        <div><span style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#cda454;font-weight:700">Contato</span><p style="font-size:18px;color:#e3d5b8;line-height:1.5;margin-top:4px">WhatsApp (48) 3500-0458<br>@padaria_passarinho</p></div>
+      </div>
+      <a href="{{ mapsHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-weight:700;color:#d9b25f;border-bottom:2px solid #cda454;padding-bottom:2px;align-self:flex-start">Abrir no Google Maps →</a>
+    </div>
+    <div style="flex:1 1 400px;min-height:340px;display:flex;flex-direction:column;gap:16px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .12s both">
+      <div style="border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(46,42,22,0.18);flex:1"><img src="assets/lanches-fachada.jpg" alt="Fachada da Padaria Passarinho" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(46,42,22,0.18);height:220px"><iframe src="https://www.google.com/maps?q=Padaria+Passarinho+Tapera+da+Base+Florianopolis&output=embed" style="width:100%;height:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section id="historia" style="position:relative;z-index:2;scroll-margin-top:80px;background:#17130e;color:#ecdfc4;padding:clamp(56px,9vh,120px) clamp(20px,5vw,56px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(30px,5vw,64px);align-items:center">
+    <div style="flex:0 1 380px;min-width:270px;animation:rise .8s cubic-bezier(.2,.7,.2,1) both"><div style="border-radius:16px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,0.4);aspect-ratio:4/5"><video src="assets/fundadoras.mp4" poster="assets/fundadoras-poster.jpg" controls="true" playsinline="true" style="width:100%;height:100%;object-fit:cover;display:block;background:#000"></video></div></div>
+    <div style="flex:1 1 360px;animation:rise .8s cubic-bezier(.2,.7,.2,1) .1s both">
+      <div style="display:flex;align-items:center;gap:14px;color:#e6c383;margin-bottom:10px"><span style="height:1px;width:34px;background:rgba(230,195,131,0.5)"></span><span style="width:7px;height:7px;background:#cda454;transform:rotate(45deg)"></span><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:#e6c383">Nossa história</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-weight:800;color:#f1e6d2;font-size:clamp(30px,4.6vw,54px);line-height:1.06;letter-spacing:-0.01em">Começou com duas mãos e um forno.</h2>
+      <p style="font-size:clamp(16px,1.7vw,19px);line-height:1.75;color:#d6c7a8;margin-top:20px;max-width:52ch">A Passarinho nasceu da vontade de levar pro bairro o gosto de comida feita em casa. Duas fundadoras, muitas receitas de família e a teimosia de fazer tudo à mão, todo dia.</p>
+      <p style="font-size:clamp(16px,1.7vw,19px);line-height:1.75;color:#d6c7a8;margin-top:16px;max-width:52ch">Hoje a vitrine tem bolo, torta, caseirinho e lanche, mas o jeito continua o mesmo: ingrediente de verdade, ponto certo e aquele cheiro que toma conta da rua quando o forno abre.</p>
+    </div>
+  </div>
+</section>
+
+<footer style="position:relative;z-index:2;background:#0a0806;color:#dccba7;padding:clamp(44px,6vh,72px) clamp(20px,5vw,56px) 40px">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;align-items:flex-start">
+    <div style="flex:1 1 260px;max-width:360px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:66px;height:66px;flex:none;border-radius:50%;background:#1c1712;display:flex;align-items:center;justify-content:center;padding:9px"><img src="assets/emblem.png" alt="Padaria Passarinho" style="max-width:100%;max-height:100%"></div>
+        <span style="display:flex;flex-direction:column;line-height:1"><span style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#e6c383;font-weight:700">Padaria</span><span style="font-family:'Playfair Display',serif;font-weight:800;font-size:26px;color:#f1e6d2">Passarinho</span></span>
+      </div>
+      <p style="color:#ab9770;font-size:14.5px;line-height:1.6;margin-top:16px">Padaria e confeitaria artesanal. Feito à mão, todo dia.</p>
+    </div>
+    <div style="flex:1 1 180px"><span style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#e6c383;font-weight:700">Onde</span><p style="color:#ccb98f;font-size:15px;line-height:1.7;margin-top:10px">R. José Olímpio da Silva, 108<br>Tapera da Base, Florianópolis - SC</p></div>
+    <div style="flex:1 1 180px"><span style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#e6c383;font-weight:700">Horário</span><p style="color:#ccb98f;font-size:15px;line-height:1.7;margin-top:10px">Seg a sáb · 5h30–20h<br>Dom · 5h30–12h</p></div>
+    <div style="flex:1 1 180px"><span style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#e6c383;font-weight:700">Contato</span><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px"><a href="{{ waHref }}" target="_blank" rel="noopener" style="color:#dccba7;font-size:15px" style-hover="color:#e6c383">WhatsApp (48) 3500-0458</a><a href="https://instagram.com/padaria_passarinho" target="_blank" rel="noopener" style="color:#dccba7;font-size:15px" style-hover="color:#e6c383">@padaria_passarinho</a></div></div>
+  </div>
+  <div style="max-width:1180px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(230,195,131,0.16);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:#8c7a54;font-size:13px"><span>© 2025 Padaria Passarinho</span><span>Feito com carinho no bairro.</span></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;554835000458&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;ctaColor&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Dourado&quot;,&quot;Dourado claro&quot;],&quot;default&quot;:&quot;Dourado&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;showRating&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;paperTexture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Marca&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const num = String(this.props.whatsappNumber || '5599999999999').replace(/\D/g, '');
+    const msg = encodeURIComponent('Olá! Vim pelo site e gostaria de fazer uma encomenda na Padaria Passarinho.');
+    return {
+      waHref: `https://wa.me/${num}?text=${msg}`,
+      mapsHref: 'https://www.google.com/maps/search/?api=1&query=Padaria+Passarinho'
+    };
+  }
+  componentDidMount() { this.applyTweaks(); }
+  componentDidUpdate() { this.applyTweaks(); }
+  applyTweaks() {
+    const mostarda = (this.props.ctaColor || 'Dourado') === 'Dourado claro';
+    document.querySelectorAll('[data-cta]').forEach(el => {
+      el.style.background = mostarda ? '#e3c07f' : '#cda454';
+      el.style.color = '#14100b';
+    });
+    const rating = this.props.showRating !== false;
+    document.querySelectorAll('[data-rating]').forEach(el => { el.style.display = rating ? '' : 'none'; });
+    const texture = this.props.paperTexture !== false;
+    document.querySelectorAll('[data-texture]').forEach(el => { el.style.display = texture ? '' : 'none'; });
+  }
+}
+</script>
+</body>
+</html>
