@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#000;color:#e8e2d6;font-family:'Jost',system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  img,video{display:block;max-width:100%}
+  ::selection{background:#c6a454;color:#000}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .gold{color:#c6a454}
+  .eb{font-family:'Jost',sans-serif;font-weight:400;font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#b89b62}
+  a{color:inherit;text-decoration:none}
+  .hair{height:1px;background:linear-gradient(90deg,transparent,rgba(198,164,84,0.55),transparent)}
+  @keyframes riseIn{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes shimmer{0%{background-position:-160% 0}100%{background-position:260% 0}}
+  .reveal{opacity:0}
+  .reveal.in{animation:riseIn 1.05s cubic-bezier(.16,.7,.2,1) forwards}
+  [data-r2].in{animation-delay:.12s}
+  [data-r3].in{animation-delay:.24s}
+  [data-r4].in{animation-delay:.36s}
+  .goldline{transform-origin:left;transform:scaleX(0)}
+  .goldline.in{animation:lineGrow 1.1s cubic-bezier(.16,.7,.2,1) .1s forwards}
+  .lux-link{position:relative;display:inline-block}
+  .lux-link::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:#c6a454;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.16,.7,.2,1)}
+  .lux-link:hover::after{transform:scaleX(1);transform-origin:left}
+  .card-fig{position:relative;overflow:hidden;background:#0a0a0a}
+  .card-fig img{width:100%;height:100%;object-fit:cover;filter:saturate(1) brightness(.98);transition:filter 1.1s cubic-bezier(.16,.7,.2,1),transform 1.4s cubic-bezier(.16,.7,.2,1)}
+  .card-fig:hover img{filter:saturate(1.06) brightness(1.02);transform:scale(1.03)}
+  .card-fig .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.6) 100%);pointer-events:none}
+  .cta{display:inline-flex;align-items:center;gap:13px;font-family:'Jost',sans-serif;font-weight:500;font-size:13.5px;letter-spacing:0.18em;text-transform:uppercase;color:#f0e9d8;background:none;border:none;padding:0 0 8px;border-bottom:1px solid rgba(198,164,84,.45);transition:border-color .5s cubic-bezier(.16,.7,.2,1),color .5s}
+  .cta:hover{border-color:#c6a454;color:#c6a454}
+  .cta-ghost{color:#c9c1b2;border-bottom-color:rgba(198,164,84,.28)}
+  .cta-ghost:hover{color:#c6a454;border-color:#c6a454}
+  .arrow{transition:transform .5s cubic-bezier(.16,.7,.2,1)}
+  .cta:hover .arrow{transform:translateX(6px)}
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.goldline{animation:none!important;opacity:1!important;transform:none!important}
+    .card-fig img{transition:none}
+  }
+</style>
+</helmet>
+
+<div style="position:relative">
+
+<!-- ========== NAV ========== -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,64px);background:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,0));backdrop-filter:blur(2px)">
+  <a href="#topo" style="display:flex;align-items:center;gap:13px">
+    <img src="assets/emblem-gold.png" alt="Padaria Passarinho" style="height:38px;width:auto">
+    <span class="serif" style="font-size:23px;letter-spacing:.03em;color:#e8e2d6;font-weight:500">Passarinho</span>
+  </a>
+  <nav style="display:flex;align-items:center;gap:clamp(18px,2.4vw,38px)">
+    <a href="#especialidades" class="lux-link" style="font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#c9c1b2">Especialidades</a>
+    <a href="#encomenda" class="lux-link" style="font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#c9c1b2">Encomendas</a>
+    <a href="#casa" class="lux-link" style="font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#c9c1b2">A Casa</a>
+    <a href="{{ waHref }}" target="_blank" rel="noopener" class="lux-link gold" data-wa style="font-size:12.5px;letter-spacing:.16em;text-transform:uppercase">Contato</a>
+  </nav>
+</header>
+
+<!-- ========== HERO ========== -->
+<section id="topo" style="position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px clamp(20px,5vw,64px) 90px;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background:radial-gradient(120% 80% at 50% 0%,rgba(198,164,84,.10),transparent 55%),radial-gradient(90% 60% at 50% 120%,rgba(198,164,84,.06),transparent 60%)"></div>
+  <div style="position:relative;z-index:1;max-width:920px">
+    <p class="eb reveal" style="animation:fadeIn 1.2s ease .1s both;margin-bottom:30px">Tapera da Base · Florianópolis</p>
+    <h1 class="serif reveal" style="animation:riseIn 1.15s cubic-bezier(.16,.7,.2,1) .2s both;font-weight:500;font-size:clamp(44px,8.4vw,108px);line-height:1.02;letter-spacing:-.01em;color:#f2ecde">
+      Padaria <span class="gold">Passarinho</span>
+    </h1>
+    <div class="goldline in" style="width:120px;height:1px;background:#c6a454;margin:36px auto 0"></div>
+    <p class="reveal" style="animation:riseIn 1.1s cubic-bezier(.16,.7,.2,1) .5s both;max-width:540px;margin:32px auto 0;font-size:clamp(15px,1.7vw,18px);line-height:1.75;color:#b8b1a2;font-weight:300">
+      Pão, bolo e doce de confeitaria, feitos à mão todo dia na Tapera. Peça pelo WhatsApp e retire fresquinho no balcão.
+    </p>
+    <div class="reveal" style="animation:riseIn 1.1s cubic-bezier(.16,.7,.2,1) .68s both;display:flex;flex-wrap:wrap;gap:32px;justify-content:center;margin-top:44px">
+      <a href="{{ waHref }}" target="_blank" rel="noopener" class="cta" data-wa style="font-size:15px">Encomendar <span class="arrow">→</span></a>
+      <a href="#especialidades" class="cta cta-ghost">Ver especialidades</a>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.6">
+    <span class="eb" style="font-size:12px;letter-spacing:.3em">Role</span>
+    <span style="width:1px;height:42px;background:linear-gradient(180deg,#c6a454,transparent)"></span>
+  </div>
+</section>
+
+<!-- ========== ASSINATURA / FRASE ========== -->
+<section style="position:relative;padding:clamp(70px,12vh,140px) clamp(24px,6vw,80px);text-align:center;border-top:1px solid rgba(198,164,84,.14)">
+  <p class="serif reveal" data-reveal style="font-size:clamp(24px,3.6vw,44px);line-height:1.35;font-weight:400;max-width:900px;margin:0 auto;color:#ded6c6;font-style:italic">
+    “Nota <span class="gold">4,9</span> em 220 avaliações. Uma padaria de bairro que o bairro faz questão de defender.”
+  </p>
+</section>
+
+<!-- ========== ESPECIALIDADES (BOLOS) ========== -->
+<section id="especialidades" style="position:relative;padding:clamp(60px,9vh,120px) clamp(20px,5vw,64px);max-width:1240px;margin:0 auto;scroll-margin-top:90px">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:clamp(40px,6vh,72px)">
+    <div>
+      <p class="eb reveal" data-reveal style="margin-bottom:16px">A Coleção · Bolos por encomenda</p>
+      <h2 class="serif reveal" data-reveal data-r2 style="font-weight:500;font-size:clamp(34px,5.6vw,66px);line-height:1.02;color:#f2ecde">Tortas artesanais</h2>
+    </div>
+    <p class="reveal" data-reveal data-r3 style="max-width:340px;font-size:15px;line-height:1.7;color:#a49d8f">Todas montadas sob encomenda, a partir de <span class="gold">R$ 79,90/kg</span>. Peça com ao menos 2 dias de antecedência.</p>
+  </div>
+
+  <!-- editorial: 2 grandes + lista -->
+  <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.6vw,22px)">
+    <figure class="card-fig reveal" data-reveal style="grid-column:span 7;aspect-ratio:16/11;border:1px solid rgba(198,164,84,.16)">
+      <img src="assets/torta-morango-encomenda.jpg" alt="Torta de morango com 4 leites, nata e suspiro">
+      <div class="veil"></div>
+      <figcaption style="position:absolute;left:26px;bottom:22px;right:26px">
+        <p class="eb gold" style="font-size:12px;margin-bottom:6px">A mais pedida</p>
+        <h3 class="serif" style="font-size:clamp(24px,2.6vw,34px);font-weight:500;color:#fff">Torta da Casa</h3>
+        <p style="font-size:14px;color:#cfc7b6;margin-top:2px">Morango, nata e quatro leites</p>
+      </figcaption>
+    </figure>
+    <figure class="card-fig reveal" data-reveal data-r2 style="grid-column:span 5;aspect-ratio:4/5;border:1px solid rgba(198,164,84,.16)">
+      <img src="assets/bolo-bolacha.jpg" alt="Fatia de torta de bolacha com chocolate">
+      <div class="veil"></div>
+      <figcaption style="position:absolute;left:24px;bottom:22px;right:24px">
+        <h3 class="serif" style="font-size:clamp(22px,2.4vw,30px);font-weight:500;color:#fff">Floresta Negra</h3>
+        <p style="font-size:14px;color:#cfc7b6;margin-top:2px">Chocolate, chantilly e cerejas</p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- lista de sabores como carta de menu -->
+  <div class="reveal" data-reveal style="margin-top:clamp(30px,4vh,52px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 clamp(40px,5vw,80px)">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:19px 0;border-bottom:1px solid rgba(198,164,84,.14)">
+        <span><span class="serif" style="font-size:21px;color:#ece5d6">Torta Mineira</span><br><span style="font-size:13px;color:#948d7f">Creme 4 leites, abacaxi e coco ralado</span></span>
+        <span class="gold" style="font-size:14px;white-space:nowrap">79,90<span style="font-size:12px;color:#b89b62">/kg</span></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:19px 0;border-bottom:1px solid rgba(198,164,84,.14)">
+        <span><span class="serif" style="font-size:21px;color:#ece5d6">Dois Amores</span><br><span style="font-size:13px;color:#948d7f">Brigadeiro branco e meio amargo</span></span>
+        <span class="gold" style="font-size:14px;white-space:nowrap">79,90<span style="font-size:12px;color:#b89b62">/kg</span></span>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:19px 0;border-bottom:1px solid rgba(198,164,84,.14)">
+        <span><span class="serif" style="font-size:21px;color:#ece5d6">Tentação</span><br><span style="font-size:13px;color:#948d7f">Chocolate preto com morango</span></span>
+        <span class="gold" style="font-size:14px;white-space:nowrap">79,90<span style="font-size:12px;color:#b89b62">/kg</span></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:19px 0;border-bottom:1px solid rgba(198,164,84,.14)">
+        <span><span class="serif" style="font-size:21px;color:#ece5d6">Marta Rocha</span><br><span style="font-size:13px;color:#948d7f">Baba de moça, nozes, damasco e nata</span></span>
+        <span class="gold" style="font-size:14px;white-space:nowrap">79,90<span style="font-size:12px;color:#b89b62">/kg</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SOBREMESAS (galeria editorial) ========== -->
+<section style="position:relative;padding:clamp(50px,8vh,110px) clamp(20px,5vw,64px);max-width:1240px;margin:0 auto">
+  <div style="text-align:center;margin-bottom:clamp(38px,5vh,64px)">
+    <p class="eb reveal" data-reveal style="margin-bottom:16px">Vitrine · Doces &amp; sobremesas</p>
+    <h2 class="serif reveal" data-reveal data-r2 style="font-weight:500;font-size:clamp(34px,5.6vw,66px);line-height:1.02;color:#f2ecde">Feitas no capricho</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(14px,1.6vw,22px)">
+    <figure class="card-fig reveal" data-reveal style="aspect-ratio:3/4;border:1px solid rgba(198,164,84,.14)">
+      <img src="assets/banoffee.jpg" alt="Banoffee de doce de leite e chantilly">
+      <div class="veil"></div>
+      <figcaption style="position:absolute;left:20px;bottom:18px"><h3 class="serif" style="font-size:24px;font-weight:500;color:#fff">Banoffee</h3><p style="font-size:13px;color:#cfc7b6">Doce de leite, banana, chantilly</p></figcaption>
+    </figure>
+    <figure class="card-fig reveal" data-reveal data-r2 style="aspect-ratio:3/4;border:1px solid rgba(198,164,84,.14)">
+      <img src="assets/cheesecake.jpg" alt="Cheesecake de chocolate com Oreo">
+      <div class="veil"></div>
+      <figcaption style="position:absolute;left:20px;bottom:18px"><h3 class="serif" style="font-size:24px;font-weight:500;color:#fff">Cheesecake</h3><p style="font-size:13px;color:#cfc7b6">Chocolate e Oreo</p></figcaption>
+    </figure>
+    <figure class="card-fig reveal" data-reveal data-r3 style="aspect-ratio:3/4;border:1px solid rgba(198,164,84,.14)">
+      <img src="assets/carolinas.jpg" alt="Carolinas recheadas">
+      <div class="veil"></div>
+      <figcaption style="position:absolute;left:20px;bottom:18px"><h3 class="serif" style="font-size:24px;font-weight:500;color:#fff">Carolinas</h3><p style="font-size:13px;color:#cfc7b6">Recheadas na hora</p></figcaption>
+    </figure>
+    <figure class="card-fig reveal" data-reveal data-r4 style="aspect-ratio:3/4;border:1px solid rgba(198,164,84,.14)">
+      <img src="assets/folhados.jpg" alt="Folhadinhos com creme e fruta">
+      <div class="veil"></div>
+      <figcaption style="position:absolute;left:20px;bottom:18px"><h3 class="serif" style="font-size:24px;font-weight:500;color:#fff">Folhadinhos</h3><p style="font-size:13px;color:#cfc7b6">Creme e fruta fresca</p></figcaption>
+    </figure>
+  </div>
+  <p class="reveal" data-reveal style="text-align:center;margin-top:34px;font-size:14.5px;color:#a49d8f">Também: bombom de morango e de uva verde, pudim da casa e mousse de maracujá ou limão. <a href="{{ waHref }}" target="_blank" rel="noopener" class="lux-link gold" data-wa>Pergunte o que tem hoje</a></p>
+</section>
+
+<!-- ========== SPLIT: sonhos & caseirinhos ========== -->
+<section style="position:relative;padding:clamp(40px,6vh,90px) clamp(20px,5vw,64px);max-width:1240px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(16px,2vw,28px)">
+    <div class="reveal" data-reveal style="display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,3vw,44px) 0">
+      <p class="eb" style="margin-bottom:14px">Saem do forno o dia todo</p>
+      <h2 class="serif" style="font-weight:500;font-size:clamp(30px,4.4vw,52px);line-height:1.04;color:#f2ecde">Sonhos, donuts<br>&amp; caseirinhos</h2>
+      <p style="margin-top:20px;max-width:38ch;font-size:15px;line-height:1.75;color:#a49d8f">Sonho de morango recheado, donuts do dia e o bolo caseirinho polvilhado, quentinho. O tipo de doce que não espera encomenda — chegou, provou.</p>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" class="cta cta-ghost" data-wa style="margin-top:30px;align-self:flex-start">Reservar uma fornada <span class="arrow">→</span></a>
+    </div>
+    <figure class="card-fig reveal" data-reveal data-r2 style="aspect-ratio:1/1;border:1px solid rgba(198,164,84,.14)"><img src="assets/sonho-morango.jpg" alt="Sonho de morango polvilhado"><div class="veil"></div></figure>
+    <figure class="card-fig reveal" data-reveal data-r3 style="aspect-ratio:1/1;border:1px solid rgba(198,164,84,.14)"><img src="assets/donuts.jpg" alt="Donuts de chocolate e cobertura rosa"><div class="veil"></div></figure>
+    <figure class="card-fig reveal" data-reveal data-r4 style="aspect-ratio:1/1;border:1px solid rgba(198,164,84,.14)"><img src="assets/caseirinhos-trio.jpg" alt="Bolos caseirinhos individuais"><div class="veil"></div></figure>
+  </div>
+</section>
+
+<!-- ========== LANCHES (faixa escura, foto grande) ========== -->
+<section style="position:relative;padding:clamp(50px,8vh,110px) clamp(20px,5vw,64px);border-top:1px solid rgba(198,164,84,.14);border-bottom:1px solid rgba(198,164,84,.14)">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3vw,52px);align-items:center">
+    <div class="reveal" data-reveal>
+      <p class="eb" style="margin-bottom:14px">Montado na hora · balcão</p>
+      <h2 class="serif" style="font-weight:500;font-size:clamp(30px,4.6vw,56px);line-height:1.02;color:#f2ecde">Lanches naturais</h2>
+      <p style="margin-top:20px;max-width:40ch;font-size:15px;line-height:1.75;color:#a49d8f">Pão de grãos, croissant amanteigado ou wrap, recheio montado na hora e salada fresca. Para levar ou comer ali mesmo, com um café.</p>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" class="cta" data-wa style="margin-top:30px">Pedir um lanche <span class="arrow">→</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.4vw,18px)">
+      <figure class="card-fig reveal" data-reveal data-r2 style="grid-column:1/-1;aspect-ratio:16/9;border:1px solid rgba(198,164,84,.14)"><img src="assets/lanche-salame.jpg" alt="Lanche natural de salame, presunto e queijo no pão de grãos"><div class="veil"></div></figure>
+      <figure class="card-fig reveal" data-reveal data-r3 style="aspect-ratio:1/1;border:1px solid rgba(198,164,84,.14)"><img src="assets/croissant-lanche.jpg" alt="Croissant recheado"><div class="veil"></div></figure>
+      <figure class="card-fig reveal" data-reveal data-r4 style="aspect-ratio:1/1;border:1px solid rgba(198,164,84,.14)"><img src="assets/wrap.jpg" alt="Wrap de frango com salada"><div class="veil"></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MINI CAKES (destaque romântico) ========== -->
+<section style="position:relative;padding:clamp(50px,8vh,120px) clamp(20px,5vw,64px);max-width:1240px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,64px);align-items:center">
+    <figure class="card-fig reveal" data-reveal style="aspect-ratio:4/5;border:1px solid rgba(198,164,84,.2);order:2"><img src="assets/mini-cakes.jpg" style="object-position:top" alt="Mini cakes embalados com laço"><div class="veil"></div></figure>
+    <div class="reveal" data-reveal data-r2 style="order:1">
+      <p class="eb" style="margin-bottom:16px">Do tamanho da comemoração</p>
+      <h2 class="serif" style="font-weight:500;font-size:clamp(32px,5vw,60px);line-height:1.02;color:#f2ecde">Mini cakes</h2>
+      <p style="margin-top:22px;max-width:42ch;font-size:15.5px;line-height:1.8;color:#a49d8f">O bolo individual, embalado com laço, para celebrar um momento com quem importa. Escolha o sabor e a cor da fita — a gente entrega pronto para presentear.</p>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" class="cta cta-ghost" data-wa style="margin-top:32px">Encomendar um mini cake <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ENCOMENDA (sequência numerada real) ========== -->
+<section id="encomenda" style="position:relative;padding:clamp(60px,9vh,130px) clamp(20px,5vw,64px);border-top:1px solid rgba(198,164,84,.14);scroll-margin-top:90px">
+  <div style="max-width:1140px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(44px,6vh,80px)">
+      <p class="eb reveal" data-reveal style="margin-bottom:16px">Como funciona</p>
+      <h2 class="serif reveal" data-reveal data-r2 style="font-weight:500;font-size:clamp(34px,5.6vw,66px);line-height:1.02;color:#f2ecde">Quatro passos até a mesa</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(24px,3vw,48px)">
+      <div class="reveal" data-reveal>
+        <div class="serif gold" style="font-size:54px;font-weight:400;line-height:1">01</div>
+        <div class="hair" style="width:46px;margin:14px 0 16px"></div>
+        <h3 class="serif" style="font-size:22px;font-weight:500;color:#ece5d6">Chama no WhatsApp</h3>
+        <p style="margin-top:8px;font-size:14px;line-height:1.7;color:#a49d8f">Diz o sabor, o tamanho em kg e a data. A gente confirma tudo por lá.</p>
+      </div>
+      <div class="reveal" data-reveal data-r2>
+        <div class="serif gold" style="font-size:54px;font-weight:400;line-height:1">02</div>
+        <div class="hair" style="width:46px;margin:14px 0 16px"></div>
+        <h3 class="serif" style="font-size:22px;font-weight:500;color:#ece5d6">Peça com antecedência</h3>
+        <p style="margin-top:8px;font-size:14px;line-height:1.7;color:#a49d8f">Bolos e tortas com no mínimo dois dias. Sabor personalizado, sob consulta.</p>
+      </div>
+      <div class="reveal" data-reveal data-r3>
+        <div class="serif gold" style="font-size:54px;font-weight:400;line-height:1">03</div>
+        <div class="hair" style="width:46px;margin:14px 0 16px"></div>
+        <h3 class="serif" style="font-size:22px;font-weight:500;color:#ece5d6">Reserve com o sinal</h3>
+        <p style="margin-top:8px;font-size:14px;line-height:1.7;color:#a49d8f">O pedido fica reservado com 50% de sinal. O restante, na retirada.</p>
+      </div>
+      <div class="reveal" data-reveal data-r4>
+        <div class="serif gold" style="font-size:54px;font-weight:400;line-height:1">04</div>
+        <div class="hair" style="width:46px;margin:14px 0 16px"></div>
+        <h3 class="serif" style="font-size:22px;font-weight:500;color:#ece5d6">Retire fresquinho</h3>
+        <p style="margin-top:8px;font-size:14px;line-height:1.7;color:#a49d8f">Combinamos dia e hora. Sai do balcão direto para a sua mesa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== A CASA (vídeo ambiente + processo) ========== -->
+<section id="casa" style="position:relative;padding:clamp(56px,9vh,120px) clamp(20px,5vw,64px);max-width:1240px;margin:0 auto;scroll-margin-top:90px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,44px);align-items:center">
+    <div class="reveal" data-reveal>
+      <p class="eb" style="margin-bottom:16px">A Casa · Tapera da Base</p>
+      <h2 class="serif" style="font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;color:#f2ecde">Um cantinho para<br>ficar e voltar</h2>
+      <p style="margin-top:22px;max-width:40ch;font-size:15.5px;line-height:1.8;color:#a49d8f">Ambiente climatizado, café na xícara e pão saindo do forno o tempo todo. Ponto de parada de ciclista, mesa de aniversário improvisada, cara conhecida atrás do balcão.</p>
+    </div>
+    <div style="display:flex;gap:clamp(12px,1.6vw,20px);justify-content:center">
+      <figure class="reveal" data-reveal data-r2 style="width:min(280px,46%);aspect-ratio:9/16;border:1px solid rgba(198,164,84,.2);overflow:hidden;background:#0a0a0a"><video src="assets/ambiente.mp4" autoplay="true" muted="true" loop="true" playsinline="true" style="width:100%;height:100%;object-fit:cover"></video></figure>
+      <figure class="reveal" data-reveal data-r3 style="width:min(280px,46%);aspect-ratio:9/16;border:1px solid rgba(198,164,84,.2);overflow:hidden;background:#0a0a0a;margin-top:34px"><video src="assets/processo-pao.mp4" autoplay="true" muted="true" loop="true" playsinline="true" style="width:100%;height:100%;object-fit:cover"></video></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HISTÓRIA (fundadoras) ========== -->
+<section style="position:relative;padding:clamp(56px,9vh,120px) clamp(20px,5vw,64px);border-top:1px solid rgba(198,164,84,.14)">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px);align-items:center">
+    <figure class="reveal" data-reveal style="aspect-ratio:4/5;border:1px solid rgba(198,164,84,.2);overflow:hidden;background:#0a0a0a"><video src="assets/fundadoras.mp4" poster="assets/fundadoras-poster.jpg" controls="true" playsinline="true" style="width:100%;height:100%;object-fit:cover"></video></figure>
+    <div class="reveal" data-reveal data-r2>
+      <p class="eb" style="margin-bottom:16px">Nossa história</p>
+      <h2 class="serif" style="font-weight:500;font-size:clamp(30px,4.6vw,54px);line-height:1.05;color:#f2ecde">Começou com duas mãos<br>e um forno</h2>
+      <p style="margin-top:22px;max-width:48ch;font-size:15.5px;line-height:1.85;color:#a49d8f">A Passarinho nasceu da vontade de levar para o bairro o gosto de comida feita em casa. Duas fundadoras, receitas de família e a teimosia de fazer tudo à mão, todo dia.</p>
+      <p style="margin-top:16px;max-width:48ch;font-size:15.5px;line-height:1.85;color:#a49d8f">Hoje a vitrine tem bolo, torta, caseirinho e lanche. O jeito continua o mesmo: ingrediente de verdade, ponto certo e o cheiro que toma conta da rua quando o forno abre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ONDE / CONTATO ========== -->
+<section style="position:relative;padding:clamp(56px,9vh,120px) clamp(20px,5vw,64px);max-width:1240px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:stretch">
+    <div class="reveal" data-reveal style="display:flex;flex-direction:column;justify-content:center">
+      <p class="eb" style="margin-bottom:16px">Onde nos encontrar</p>
+      <h2 class="serif" style="font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.02;color:#f2ecde">Passa aqui</h2>
+      <div style="margin-top:30px;display:flex;flex-direction:column;gap:22px">
+        <div><span class="eb gold" style="font-size:12px">Endereço</span><p style="font-size:17px;color:#ded6c6;line-height:1.5;margin-top:6px">R. José Olímpio da Silva, 108<br>Tapera da Base, Florianópolis · SC</p></div>
+        <div><span class="eb gold" style="font-size:12px">Horário</span><p style="font-size:17px;color:#ded6c6;line-height:1.5;margin-top:6px">Segunda a sábado · 5h30 às 20h<br>Domingo · 5h30 às 12h</p></div>
+        <div><span class="eb gold" style="font-size:12px">Contato</span><p style="font-size:17px;color:#ded6c6;line-height:1.5;margin-top:6px">WhatsApp (48) 3500-0458<br><a href="https://instagram.com/padaria_passarinho" target="_blank" rel="noopener" class="lux-link gold">@padaria_passarinho</a></p></div>
+      </div>
+      <a href="{{ mapsHref }}" target="_blank" rel="noopener" class="cta cta-ghost" data-wa style="margin-top:32px;align-self:flex-start">Abrir no mapa <span class="arrow">→</span></a>
+    </div>
+    <div class="reveal" data-reveal data-r2 style="min-height:360px;border:1px solid rgba(198,164,84,.2);overflow:hidden;filter:grayscale(1) contrast(1.1) brightness(.7);transition:filter .8s"><iframe src="https://www.google.com/maps?q=Padaria+Passarinho+Tapera+da+Base+Florianopolis&output=embed" style="width:100%;height:100%;min-height:360px;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section style="position:relative;padding:clamp(70px,12vh,150px) clamp(20px,5vw,64px);text-align:center;border-top:1px solid rgba(198,164,84,.14)">
+  <div style="position:relative;z-index:1">
+    <p class="eb reveal" data-reveal style="margin-bottom:22px">Vamos combinar a sua encomenda</p>
+    <h2 class="serif reveal" data-reveal data-r2 style="font-weight:500;font-size:clamp(32px,5.6vw,64px);line-height:1.1;color:#f2ecde;max-width:18ch;margin:0 auto">Bolo bom pede conversa, não formulário.</h2>
+    <div class="reveal" data-reveal data-r3 style="margin-top:40px"><a href="{{ waHref }}" target="_blank" rel="noopener" class="cta" data-wa style="font-size:15px">Falar no WhatsApp <span class="arrow">→</span></a></div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer style="position:relative;padding:clamp(40px,6vh,64px) clamp(20px,5vw,64px) 40px;border-top:1px solid rgba(198,164,84,.14)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:center">
+    <a href="#topo" style="display:flex;align-items:center;gap:13px">
+      <img src="assets/emblem-gold.png" alt="Padaria Passarinho" style="height:44px;width:auto">
+      <span class="serif" style="font-size:22px;color:#e8e2d6;font-weight:500">Padaria Passarinho</span>
+    </a>
+    <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:center">
+      <a href="{{ waHref }}" target="_blank" rel="noopener" class="lux-link" data-wa style="font-size:13px;letter-spacing:.1em;color:#c9c1b2">WhatsApp (48) 3500-0458</a>
+      <a href="https://instagram.com/padaria_passarinho" target="_blank" rel="noopener" class="lux-link" style="font-size:13px;letter-spacing:.1em;color:#c9c1b2">@padaria_passarinho</a>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:32px auto 0;padding-top:22px;border-top:1px solid rgba(198,164,84,.1);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:#6b6559;font-size:12px;letter-spacing:.04em">
+    <span>© 2026 Padaria Passarinho · Tapera da Base, Florianópolis</span>
+    <span>Feito à mão, todo dia.</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;554835000458&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const num = String(this.props.whatsappNumber || '554835000458').replace(/\D/g, '');
+    const msg = encodeURIComponent('Olá! Vim pelo site e gostaria de fazer uma encomenda na Padaria Passarinho.');
+    return {
+      waHref: `https://wa.me/${num}?text=${msg}`,
+      mapsHref: 'https://www.google.com/maps/search/?api=1&query=Padaria+Passarinho+Tapera+da+Base+Florianopolis'
+    };
+  }
+  componentDidMount() { this.setup(); }
+  componentDidUpdate() { this.setup(); }
+  setup() {
+    if (window.__ppV3) return;
+    window.__ppV3 = true;
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // scroll reveal
+    const revEls = document.querySelectorAll('[data-reveal], .goldline');
+    if ('IntersectionObserver' in window && !prefersReduced) {
+      const ro = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+      revEls.forEach((el) => ro.observe(el));
+    } else {
+      revEls.forEach((el) => el.classList.add('in'));
+    }
+    // videos play only in view
+    if ('IntersectionObserver' in window) {
+      const vo = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { const v = e.target; if (e.isIntersecting) v.play().catch(()=>{}); else v.pause(); });
+      }, { threshold: 0.35 });
+      document.querySelectorAll('video[autoplay]').forEach((v) => vo.observe(v));
+    }
+  }
+}
+</script>
+</body>
+</html>
